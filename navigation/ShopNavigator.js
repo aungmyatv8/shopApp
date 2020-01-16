@@ -8,6 +8,7 @@ import { createAppContainer } from "react-navigation";
 import ProductDetailScreen from "../screens/shop/ProductDetailScreen";
 import OrdersScreen from "../screens/shop/OrdersScreen";
 import CartScreen from "../screens/shop/CartScreen";
+import EditProductScreen from "../screens/user/EditProductScreen";
 import { Ionicons } from "@expo/vector-icons";
 import UserProductsScreen from "../screens/user/UserProductScreen";
 import React from "react";
