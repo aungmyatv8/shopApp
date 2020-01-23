@@ -21,7 +21,7 @@ const defaultNavigationOptions = {
     fontFamily: "open-sans-bold"
   },
   headerBackTitleStyle: {
-    fontSize: "open-sans"
+    fontFamily: "open-sans"
   },
   headerTintColor: Platform.OS === "android" ? "white" : Colors.primary
 };
@@ -54,7 +54,7 @@ const OrdersNavigator = createStackNavigator(
     navigationOptions: {
       drawerIcon: drawerConfig => (
         <Ionicons
-          name={Platform.OS === "android" ? "md-create" : "ios-create"}
+          name={Platform.OS === "android" ? "md-list" : "ios-list"}
           size={23}
           color={drawerConfig.tintColor}
         />
@@ -67,7 +67,7 @@ const OrdersNavigator = createStackNavigator(
 const AdminNavigator = createStackNavigator(
   {
     UserProducts: UserProductsScreen,
-    EditProducts: EditProductScreen
+    EditProduct: EditProductScreen
   },
   {
     navigationOptions: {

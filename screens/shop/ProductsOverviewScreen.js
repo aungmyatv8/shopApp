@@ -4,20 +4,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
 import HeaderButton from "../../components/UI/HeaderButton";
-
 import ProductItem from "../../components/shop/ProductItem";
 import * as cartActions from "../../store/actions/cart";
 import Colors from "../../constants/Colors";
 
-const ProductsOverViewScreen = props => {
+const ProductsOverviewScreen = props => {
   const products = useSelector(state => state.products.availableProducts);
   const dispatch = useDispatch();
+
   const selectItemHandler = (id, title) => {
     props.navigation.navigate("ProductDetail", {
       productId: id,
       productTitle: title
     });
   };
+
   return (
     <FlatList
       data={products}
@@ -39,7 +40,7 @@ const ProductsOverViewScreen = props => {
             }}
           />
           <Button
-            color={Colors.price}
+            color={Colors.primary}
             title="To Cart"
             onPress={() => {
               dispatch(cartActions.addToCart(itemData.item));
@@ -51,7 +52,7 @@ const ProductsOverViewScreen = props => {
   );
 };
 
-ProductsOverViewScreen.navigationOptions = navData => {
+ProductsOverviewScreen.navigationOptions = navData => {
   return {
     headerTitle: "All Products",
     headerLeft: () => (
@@ -79,4 +80,4 @@ ProductsOverViewScreen.navigationOptions = navData => {
   };
 };
 
-export default ProductsOverViewScreen;
+export default ProductsOverviewScreen;

@@ -5,21 +5,23 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
-  Platform,
-  TouchableNativeFeedback
+  TouchableNativeFeedback,
+  Platform
 } from "react-native";
 
-import Colors from "../../constants/Colors";
+import Card from "../UI/Card";
 
 const ProductItem = props => {
-  let TouchableCamp = TouchableOpacity;
+  let TouchableCmp = TouchableOpacity;
+
   if (Platform.OS === "android" && Platform.Version >= 21) {
-    TouchableCamp = TouchableNativeFeedback;
+    TouchableCmp = TouchableNativeFeedback;
   }
+
   return (
-    <View style={styles.product}>
+    <Card style={styles.product}>
       <View style={styles.touchable}>
-        <TouchableCamp onPress={props.onSelect} useForeground>
+        <TouchableCmp onPress={props.onSelect} useForeground>
           <View>
             <View style={styles.imageContainer}>
               <Image style={styles.image} source={{ uri: props.image }} />
@@ -30,21 +32,14 @@ const ProductItem = props => {
             </View>
             <View style={styles.actions}>{props.children}</View>
           </View>
-        </TouchableCamp>
+        </TouchableCmp>
       </View>
-    </View>
+    </Card>
   );
 };
 
 const styles = StyleSheet.create({
   product: {
-    shadowColor: "black",
-    shadowOpacity: 0.26,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 8,
-    elevation: 5,
-    borderRadius: 10,
-    backgroundColor: "white",
     height: 300,
     margin: 20
   },
@@ -63,16 +58,18 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%"
   },
-  title: {
-    fontSize: 18,
-    marginVertical: 4
-  },
   details: {
     alignItems: "center",
     height: "17%",
     padding: 10
   },
+  title: {
+    fontFamily: "open-sans-bold",
+    fontSize: 18,
+    marginVertical: 2
+  },
   price: {
+    fontFamily: "open-sans",
     fontSize: 14,
     color: "#888"
   },

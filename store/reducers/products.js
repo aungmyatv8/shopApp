@@ -19,8 +19,8 @@ export default (state = initialState, action) => {
         "u1",
         action.productData.title,
         action.productData.imageUrl,
-        action.productData.price,
-        action.productData.description
+        action.productData.description,
+        action.productData.price
       );
       return {
         ...state,
@@ -33,22 +33,22 @@ export default (state = initialState, action) => {
       );
       const updatedProduct = new Product(
         action.pid,
-        state.userProducts[productIndex].owmerId,
-        aciton.productData.title,
+        state.userProducts[productIndex].ownerId,
+        action.productData.title,
         action.productData.imageUrl,
         action.productData.description,
         state.userProducts[productIndex].price
       );
       const updatedUserProducts = [...state.userProducts];
-      updatedUserProducts[productIndex];
+      updatedUserProducts[productIndex] = updatedProduct;
       const availableProductIndex = state.availableProducts.findIndex(
         prod => prod.id === action.pid
       );
-      const udpatedAvailableProducts = [...state.availableProducts];
-      udpatedAvailableProducts[availableProductIndex] = updatedProduct;
+      const updatedAvailableProducts = [...state.availableProducts];
+      updatedAvailableProducts[availableProductIndex] = updatedProduct;
       return {
         ...state,
-        availableProduct: udpatedAvailableProducts,
+        availableProducts: updatedAvailableProducts,
         userProducts: updatedUserProducts
       };
     case DELETE_PRODUCT:
